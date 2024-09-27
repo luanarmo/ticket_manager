@@ -122,7 +122,13 @@ python manage.py runserver
 
 La aplicación estará disponible en `http://localhost:8000`.
 
+# Diagrama entidad relacion
+
+![diagra_er](https://github.com/user-attachments/assets/312245b7-9267-465f-bbe4-661648d3b2bb)
+
 # Diagrama de Base de datos
+
+![ticket_manager - public - events_event](https://github.com/user-attachments/assets/80e2f9c2-bc34-4353-b682-e06fa13e76a4)
 
 # Como probar el servicio
 La API REST desarrollada con Django y Django REST Framework se puede probar de manera interactiva utilizando Swagger. Swagger proporciona una interfaz visual que permite explorar y realizar solicitudes a los distintos endpoints de la API sin necesidad de utilizar herramientas externas como Postman.
@@ -134,3 +140,29 @@ Una vez en la interfaz de Swagger, verás una lista de todos los endpoints dispo
 Para realizar pruebas, simplemente selecciona el endpoint que deseas probar, haz cick en el botón "Try it out",completa los parámetros requeridos (si los hay) y haz clic en el botón "Execute". Swagger mostrará la respuesta de la API en tiempo real.
 
 # Ejemplos
+Ejemplo sencillo para crear evento, listar eventos, consultar detalles de evento, vender boleto, revisar que el cambio se ve reflejado en los detalles del evento y regla de negocio de cantidad de boletos vendidos.
+
+## Swagger
+![image](https://github.com/user-attachments/assets/fc85a927-86df-4588-9552-6c567c8547ad)
+## Endpoints
+![image](https://github.com/user-attachments/assets/ca252cf7-ad40-4b08-a57f-9ace831e4747)
+## Crear evento
+![image](https://github.com/user-attachments/assets/5df6da21-2d61-491a-85f1-cdde81c307a8)
+## Listar eventos
+![image](https://github.com/user-attachments/assets/a7b39016-e514-4303-948a-ab567c8b55a3)
+## Consultar detalles del evento
+![image](https://github.com/user-attachments/assets/ebfcea70-03f4-4ae5-b153-8f6ec49256e8)
+## Vender boleto para el evento creado
+![image](https://github.com/user-attachments/assets/a35d09f6-14af-4b86-81a8-970758efe8df)
+## Consultar evento de nuevo
+![image](https://github.com/user-attachments/assets/39dd43bc-2e94-4774-9242-5bb4371e62e6)
+## Intentar vender otro boleto para el evento
+![image](https://github.com/user-attachments/assets/22094485-02ed-4970-94c6-7ce5f617be56)
+
+Para consultar ejemplos más detallados, revisar las pruebas unitarias.
+
+
+
+
+
+
