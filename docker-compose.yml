@@ -1,0 +1,31 @@
+volumes:
+  ticket_manager_local_progress: {}
+
+services:
+  ticket_manager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ticket_manager
+    container_name: ticket_manager_local_django
+    depends_on:
+      - db
+    volumes:
+      - .:/app:z
+    ports:
+      - "8000:8000"
+    command: /start
+    restart: on-failure
+
+  db:
+    restart: on-failure
+    image: postgres:latest
+    container_name: ticket_manager_local_db
+    environment:
+      - POSTGRES_USER=debug
+      - POSTGRES_PASSWORD=some_password
+      - POSTGRES_DB=ticket_manager
+    ports:
+      - "5433:5432"
+    volumes:
+      - ticket_manager_local_progress:/var/lib/postgresql/data:Z
