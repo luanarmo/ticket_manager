@@ -12,6 +12,8 @@ services:
       - db
     volumes:
       - .:/app:z
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     command: /start
@@ -21,10 +23,8 @@ services:
     restart: on-failure
     image: postgres:latest
     container_name: ticket_manager_local_db
-    environment:
-      - POSTGRES_USER=debug
-      - POSTGRES_PASSWORD=some_password
-      - POSTGRES_DB=ticket_manager
+    env_file:
+      - .env
     ports:
       - "5433:5432"
     volumes:
