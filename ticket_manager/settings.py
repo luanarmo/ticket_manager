@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "drf_yasg",
+    "graphene_django",
     "events",
 ]
 
@@ -140,3 +141,5 @@ REST_FRAMEWORK = {
 }
 
 SWAGGER_SETTINGS = {"SECURITY_DEFINITIONS": None}
+# Graphene settings
+GRAPHENE = {"SCHEMA": "ticket_manager.schema.schema"}
