@@ -34,7 +34,12 @@ class EventType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    events = graphene.List(EventType)
+    events = graphene.List(
+        EventType,
+        search=graphene.String(),
+        first=graphene.Int(),
+        skip=graphene.Int(),
+    )
     event = graphene.Field(EventType, id=graphene.UUID(required=True))
     tickets = graphene.List(TicketType)
     tickets_by_event = graphene.Field(
@@ -42,8 +47,26 @@ class Query(graphene.ObjectType):
         event_id=graphene.UUID(required=True),
     )
 
-    def resolve_events(root, info):
-        return Event.objects.all()
+    def resolve_events(
+        root,
+        info,
+        search=None,
+        first=None,
+        skip=None,
+        **kwargs,
+    ):
+        qs = Event.objects.all()
+
+        if search:
+            qs = qs.filter(name__icontains=search)
+
+        if skip:
+            qs = qs[skip:]
+
+        if first:
+            qs = qs[:first]
+
+        return qs
 
     def resolve_event(root, info, id):
         return services.get_event_by_id(id)
