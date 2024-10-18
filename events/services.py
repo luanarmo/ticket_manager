@@ -3,6 +3,30 @@ from datetime import date
 from rest_framework.exceptions import ValidationError
 
 
+def get_event_by_id(id: str) -> Event:
+    """
+    Obtiene un evento por su id
+    """
+    try:
+        return Event.objects.get(id=id)
+    except Event.DoesNotExist:
+        raise ValidationError(
+            {"id": "No se encontró un evento con el id proporcionado"}
+        )
+
+
+def get_ticket_by_id(id: str) -> Ticket:
+    """
+    Obtiene un boleto por su id
+    """
+    try:
+        return Ticket.objects.get(id=id)
+    except Ticket.DoesNotExist:
+        raise ValidationError(
+            {"id": "No se encontró un boleto con el id proporcionado"}
+        )
+
+
 def create_event(
     name: str,
     start: date,
