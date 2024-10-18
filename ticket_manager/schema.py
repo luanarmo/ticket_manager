@@ -85,10 +85,10 @@ class CreateEvent(graphene.Mutation):
     event = graphene.Field(EventType)
 
     class Arguments:
-        name = graphene.String()
-        start = graphene.Date()
-        end = graphene.Date()
-        total_tickets = graphene.Int()
+        name = graphene.String(required=True)
+        start = graphene.Date(required=True)
+        end = graphene.Date(required=True)
+        total_tickets = graphene.Int(required=True)
 
     def mutate(self, info, name, start, end, total_tickets):
         event = services.create_event(name, start, end, total_tickets)
