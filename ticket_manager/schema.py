@@ -109,7 +109,7 @@ class UpdateEvent(graphene.Mutation):
     def mutate(self, info, id, name, start, end, total_tickets):
         current_event = services.get_event_by_id(id)
         event = services.update_event(
-            current_event,
+            event=current_event,
             name=name,
             start=start,
             end=end,
