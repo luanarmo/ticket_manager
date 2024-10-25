@@ -7,7 +7,7 @@ def validate_start(value: date) -> date:
     """
     Valida que la fecha de inicio sea mayor o igual que la fecha actual
     """
-    if not value:
+    if value is None:
         return value
 
     if value < date.today():
@@ -19,7 +19,7 @@ def validate_end(value: date) -> date:
     """
     Valida que la fecha de fin sea mayor que la fecha actual
     """
-    if not value:
+    if value is None:
         return value
 
     if value < date.today():
@@ -31,7 +31,7 @@ def validate_total_tickets(value: int) -> int:
     """
     Valida que el número total de boletos sea mayor que 0 y menor o igual a 300.
     """
-    if not value:
+    if value is None:
         return value
 
     if value <= 0:
@@ -45,7 +45,7 @@ def validate_start_end(start: date, end: date) -> dict:
     """
     Valida que la fecha de inicio sea menor que la fecha de fin.
     """
-    if not start or not end:
+    if start is None or end is None:
         return {"start": start, "end": end}
 
     if start > end:
