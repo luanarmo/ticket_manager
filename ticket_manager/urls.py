@@ -18,7 +18,6 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from rest_framework import permissions
 from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
 
@@ -34,24 +33,3 @@ urlpatterns += static(
     settings.MEDIA_URL,
     document_root=settings.MEDIA_ROOT,
 )
-if "drf_yasg" in settings.INSTALLED_APPS:
-    from drf_yasg import openapi
-    from drf_yasg.views import get_schema_view
-
-    schema_view = get_schema_view(
-        openapi.Info(
-            title="Documentacion Swagger para Admistración de boletos",
-            default_version="v1",
-            description="Documentacion de Backend para Admistración de boletos",
-        ),
-        public=True,
-        permission_classes=(permissions.AllowAny,),
-    )
-    # Path de API de Swagger
-    urlpatterns += [
-        path(
-            "swagger/",
-            schema_view.with_ui("swagger", cache_timeout=0),
-            name="schema-swagger-ui",
-        ),
-    ]
