@@ -10,7 +10,16 @@ Se pueden realizar las siguientes acciones:
 - Canjear un boleto
 - Reembolsar un boleto
 
-# Estructura del proyecto
+## Tabla de Contenidos
+
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Despliegue](#despliegue)
+- [Diagrama entidad relacion](#diagrama-entidad-relacion)
+- [Diagrama de Base de datos](#diagrama-de-base-de-datos)
+- [Como probar el servicio](#como-probar-el-servicio)
+- [Ejemplos](#ejemplos)
+
+## Estructura del proyecto
 
 El proyecto está organizado de la siguiente manera:
 
@@ -31,11 +40,11 @@ El proyecto está organizado de la siguiente manera:
 
 Cada directorio y archivo tiene un propósito específico para mantener el código organizado y modular.
 
-# Despliegue
+## Despliegue
 
 Este proyecto se puede desplegar utilizando Docker y tambien en local
 
-## Despliegue utilizando Docker
+### Despliegue utilizando Docker
 Puedes ejecutar la aplicación usando Docker Compose. Ejecuta:
 
 ```
@@ -48,7 +57,7 @@ Esto levantará los servicios definidos en el archivo `docker-compose.yml`. La a
 
 Si prefieres ejecutar la aplicación de forma local, asegúrate de tener Python instalado y sigue estos pasos:
 
-# 1. Crear un entorno virtual
+### 1. Crear un entorno virtual
 
 Crea un entorno virtual en la raíz del proyecto:
 
@@ -56,7 +65,7 @@ Crea un entorno virtual en la raíz del proyecto:
 python -m venv venv
 ```
 
-# 2. Activar el entorno virtual
+### 2. Activar el entorno virtual
 
 - En Windows:
 
@@ -70,23 +79,23 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-# 3. Instalar los requisitos
+### 3. Instalar los requisitos
 
 Instala las dependencias necesarias utilizando el archivo `requirements.txt`:
 
 ```
 pip install -r requirements.txt
 ```
-# 4. Cambiar la configuración de la base de datos en `ticket_manager/settings.py`
+### 4. Cambiar la configuración de la base de datos en `ticket_manager/settings.py`
 Se debe crear una base de datos utilizando postgresql, y cambiar la configuración.
 
-# 5. Aplicar las migraciones a la base de datos
+### 5. Aplicar las migraciones a la base de datos
 Utilizar siguiente comando:
 ```
 python manage.py migrate
 ```
 
-# 6. Ejecutar la aplicación
+### 6. Ejecutar la aplicación
 
 Finalmente, ejecuta la aplicación con el comando:
 
@@ -96,28 +105,41 @@ python manage.py runserver
 
 La aplicación estará disponible en `http://localhost:8000`.
 
-# Diagrama entidad relacion
+## Diagrama entidad relacion
 
 ![diagra_er](https://github.com/user-attachments/assets/312245b7-9267-465f-bbe4-661648d3b2bb)
 
-# Diagrama de Base de datos
+## Diagrama de Base de datos
 
 ![ticket_manager - public - events_event](https://github.com/user-attachments/assets/80e2f9c2-bc34-4353-b682-e06fa13e76a4)
 
-# Como probar el servicio
-La API REST desarrollada con Django y Django REST Framework se puede probar de manera interactiva utilizando Swagger. Swagger proporciona una interfaz visual que permite explorar y realizar solicitudes a los distintos endpoints de la API sin necesidad de utilizar herramientas externas como Postman.
+## Como probar el servicio
+La API desarrollada con Django y Graphql se puede probar de manera interactiva utilizando GraphiQL o Insomnia. Insomnia proporciona una interfaz visual que permite explorar y realizar solicitudes a los distintos querys y mutaciones.
 
 Una vez desplegada la aplicación, GraphiQL estara disponible en `http://localhost:8000/graphql/`
 
 
-# Ejemplos
+## Ejemplos
 Ejemplo sencillo para crear evento, listar eventos, consultar detalles de evento, vender boleto, revisar que el cambio se ve reflejado en los detalles del evento y regla de negocio de cantidad de boletos vendidos.
 
-## GraphiQL
+### Listar eventos
+![image](https://github.com/user-attachments/assets/71fd81f7-6275-40ad-af61-1f73e7015391)
+### Obtener evento con detalles de los boletos
+![image](https://github.com/user-attachments/assets/74bc1a7c-30bc-4921-8568-b2dbabae4fc3)
+### Crear evento
+![image](https://github.com/user-attachments/assets/77b48419-b72b-4717-a42f-d30e4532841a)
+### Actualizar evento
+![image](https://github.com/user-attachments/assets/8f0356e4-7cda-4fd6-8976-3efe64631510)
+### Eliminar evento
+![image](https://github.com/user-attachments/assets/c4bb00d0-1f95-49c6-9919-29de0b787df2)
+### Vender boleto
+![image](https://github.com/user-attachments/assets/e8838cb3-1a80-444e-ace4-f87ea2adb06f)
+### Canjear boleto
+![image](https://github.com/user-attachments/assets/91186f90-6db6-4a8b-b337-ef5173a33927)
+### Reembolsar boleto
+![image](https://github.com/user-attachments/assets/ef44c4df-90ff-4ebd-82cb-9c720a1a5b15)
 
-# 🚧 Work in progress 🚧
-
-Para consultar ejemplos más detallados, revisar las pruebas unitarias.
+## Para revisar ejemplos más detallados donde se validan las reglas de negocio, consultar las pruebas unitarias.
 
 
 
